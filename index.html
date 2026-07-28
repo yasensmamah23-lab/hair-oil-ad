@@ -31,11 +31,14 @@
         .whatsapp-bg {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
         }
+        .facebook-bg {
+            background: linear-gradient(135deg, #1877F2 0%, #0c5dc7 100%);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Header Section with Call & WhatsApp -->
+    <!-- Header Section with Call, WhatsApp & Facebook -->
     <header class="py-4 px-4 text-center border-b border-[#BF953F]/20 card-glass sticky top-0 z-50">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
@@ -48,14 +51,18 @@
                 </div>
             </div>
             
-            <div class="flex items-center gap-2">
-                <a href="tel:0791819761" class="gold-bg text-black font-bold px-4 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2 text-sm">
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <a href="tel:0791819761" class="gold-bg text-black font-bold px-3 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-1.5 text-xs">
                     <i class="fa-solid fa-phone"></i>
                     <span>اتصال</span>
                 </a>
-                <a href="https://wa.me/962791819761" target="_blank" class="whatsapp-bg text-white font-bold px-4 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2 text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                <a href="https://wa.me/962791819761" target="_blank" class="whatsapp-bg text-white font-bold px-3 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-1.5 text-xs">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>واتساب</span>
+                </a>
+                <a href="https://www.facebook.com/share/1DH2k7MqrS/" target="_blank" class="facebook-bg text-white font-bold px-3 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-1.5 text-xs">
+                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                    <span>فيسبوك</span>
                 </a>
             </div>
         </div>
@@ -153,6 +160,9 @@
                 </a>
                 <a href="https://wa.me/962791819761" target="_blank" class="bg-[#25D366] text-white font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2">
                     <i class="fa-brands fa-whatsapp text-xl"></i> اطلب عبر الواتساب
+                </a>
+                <a href="https://www.facebook.com/share/1DH2k7MqrS/" target="_blank" class="bg-[#1877F2] text-white font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-brands fa-facebook-f text-xl"></i> صفحتنا على الفيسبوك
                 </a>
             </div>
         </div>
