@@ -7,11 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
         body {
             font-family: 'Cairo', sans-serif;
             background-color: #07130e;
             color: #f3f4f6;
+            overflow-x: hidden;
         }
         .gold-gradient {
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
@@ -23,10 +24,15 @@
         }
         .gold-border {
             border: 1px solid rgba(191, 149, 63, 0.4);
+            transition: all 0.3s ease;
+        }
+        .gold-border:hover {
+            border-color: rgba(252, 246, 186, 0.9);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.2);
         }
         .card-glass {
-            background: rgba(12, 30, 21, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(12, 30, 21, 0.75);
+            backdrop-filter: blur(12px);
         }
         .whatsapp-bg {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
@@ -34,12 +40,44 @@
         .facebook-bg {
             background: linear-gradient(135deg, #1877F2 0%, #0c5dc7 100%);
         }
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .floating-whatsapp {
+            animation: pulse-gold 2s infinite;
+        }
+        /* Fade in up animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/962791819761" target="_blank" class="fixed bottom-6 left-6 z-50 whatsapp-bg text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl floating-whatsapp transition transform hover:scale-110" title="تواصل عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Urgency Banner -->
+    <div class="bg-gradient-to-r from-[#AA771C] via-[#BF953F] to-[#AA771C] text-black text-xs sm:text-sm font-bold py-2 px-4 text-center shadow-md">
+        <i class="fa-solid fa-bolt ml-1"></i> عروض لفترة محدودة: التوصيل مجاني لكافة محافظات الأردن | ينتهي العرض خلال: <span id="countdown" class="bg-black text-[#FCF6BA] px-2 py-0.5 rounded mr-1">05:00:00</span>
+    </div>
+
     <!-- Header Section with Call, WhatsApp & Facebook -->
-    <header class="py-4 px-4 text-center border-b border-[#BF953F]/20 card-glass sticky top-0 z-50">
+    <header class="py-4 px-4 text-center border-b border-[#BF953F]/20 card-glass sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full gold-bg flex items-center justify-center text-black font-bold text-lg shadow-lg">
@@ -68,22 +106,27 @@
         </div>
     </header>
 
-    <!-- Main Banner & Grid Display -->
-    <main class="max-w-4xl mx-auto p-4 sm:p-6 w-full space-y-6">
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 w-full space-y-6 animate-fade-in">
 
         <!-- Hero Card -->
-        <div class="relative rounded-2xl overflow-hidden gold-border card-glass p-6 sm:p-10 text-center shadow-2xl">
+        <div class="relative rounded-2xl overflow-hidden gold-border card-glass p-6 sm:p-12 text-center shadow-2xl">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#BF953F_1px,transparent_1px)] [background-size:16px_16px]"></div>
             <div class="relative z-10 space-y-4">
-                <span class="bg-[#BF953F]/20 text-[#FCF6BA] text-xs font-semibold px-3 py-1 rounded-full border border-[#BF953F]/40 inline-block">
-                    فخامة الطبيعة لشعرك
+                <span class="bg-[#BF953F]/20 text-[#FCF6BA] text-xs font-semibold px-3 py-1 rounded-full border border-[#BF953F]/40 inline-block shadow-inner">
+                    ✨ النخبة في عالم العناية بالشعر
                 </span>
                 <h2 class="text-3xl sm:text-5xl font-extrabold gold-gradient leading-tight">
                     معجزة الشعر <br>أورجِنك رويال أويل
                 </h2>
-                <p class="text-gray-300 max-w-lg mx-auto text-sm sm:text-base">
-                    مزيج النخبة من الزيوت النادرة لتغذية فائقة، نعومة حريرية، وقضاء نهائي على الهيشان والتقصف.
+                <p class="text-gray-300 max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
+                    مزيج ملكي نادر من الزيوت العضوية المركزة لتغذية الجذور، منحكِ نعومة حريرية، والقضاء التام على الهيشان والتلف.
                 </p>
+                <div class="pt-2">
+                    <a href="https://wa.me/962791819761" target="_blank" class="whatsapp-bg text-white font-bold px-8 py-3 rounded-full shadow-xl inline-flex items-center gap-2 text-base hover:opacity-90 transition transform hover:scale-105">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> اطلب العبوة الأصلية الآن
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -96,7 +139,7 @@
                 </div>
                 <div>
                     <h3 class="font-bold text-lg gold-gradient">تغذية عميقة للجذور</h3>
-                    <p class="text-xs text-gray-300 mt-1">قوة فائقة من الجذور للأطراف لتقوية بصيلات الشعر وتحفيز نموه بصحة.</p>
+                    <p class="text-xs text-gray-300 mt-1">قوة فائقة من الجذور للأطراف لتقوية البصيلات وتحفيز النمو الصحي.</p>
                 </div>
             </div>
 
@@ -106,7 +149,7 @@
                 </div>
                 <div>
                     <h3 class="font-bold text-lg gold-gradient">نعومة حريرية ولمعان فائق</h3>
-                    <p class="text-xs text-gray-300 mt-1">يمنح شعرك ملمساً حريرياً ولمعاناً مذهلاً يعكس جماله الطبيعي.</p>
+                    <p class="text-xs text-gray-300 mt-1">يمنح شعرك ملمساً انسيابياً ولمعاناً مذهلاً يعكس جماله الطبيعي.</p>
                 </div>
             </div>
 
@@ -116,7 +159,7 @@
                 </div>
                 <div>
                     <h3 class="font-bold text-lg gold-gradient">القضاء على الهيشان والتقصف</h3>
-                    <p class="text-xs text-gray-300 mt-1">يعالج التلف ويقضي على الهيشان نهائياً لتستمتعي بشعر صحي ومرتب.</p>
+                    <p class="text-xs text-gray-300 mt-1">يعالج التلف ويقضي على التقصف والهيشان لتستمتعي بشعر مرتب ومثالي.</p>
                 </div>
             </div>
 
@@ -126,10 +169,38 @@
                 </div>
                 <div>
                     <h3 class="font-bold text-lg gold-gradient">الثقة في كل خصلة</h3>
-                    <p class="text-xs text-gray-300 mt-1">تركيبة متطورة تمنحك الثقة الكاملة بفضل النتائج الملحوظة خلال أيام.</p>
+                    <p class="text-xs text-gray-300 mt-1">تركيبة متطورة تضمن لك نتائج ملحوظة ومرضية خلال أيام قليلة.</p>
                 </div>
             </div>
 
+        </div>
+
+        <!-- Customer Testimonials Section -->
+        <div class="space-y-4 pt-2">
+            <h3 class="text-center text-xl font-extrabold gold-gradient">آراء النخبة ممن جربوا المنتج</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <div class="card-glass p-4 rounded-xl gold-border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm text-[#FCF6BA]">أم محمد (عمان)</span>
+                        <div class="text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">"والله العظيم الزيت خاقق... من أول أسبوع خف الهيشان والنعومة صارت خيالية، شكراً لتعاملكم الراقي."</p>
+                </div>
+
+                <div class="card-glass p-4 rounded-xl gold-border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm text-[#FCF6BA]">سارة أ. (إربد)</span>
+                        <div class="text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">"أفضل منتج عناية استخدمته بحياتي، ريحته بتجنن والنتيجة واضحة من أول استخدامين. أنصح فيه بقوة!"</p>
+                </div>
+
+            </div>
         </div>
 
         <!-- Badges & Guarantee Section -->
@@ -145,15 +216,15 @@
                 </div>
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-bolt text-[#BF953F]"></i>
-                    <span>نتائج واضحة خلال 7 أيام</span>
+                    <span>نتائج واضحة خلال أيام</span>
                 </div>
             </div>
         </div>
 
         <!-- Big CTA Banner -->
         <div class="gold-bg rounded-2xl p-6 text-center text-black shadow-2xl space-y-3">
-            <h3 class="text-2xl font-black">احصلي عليه الآن وامنحي شعركِ العناية الملكية</h3>
-            <p class="text-sm font-semibold opacity-90">توصيل سريع لكافة المناطق في الأردن</p>
+            <h3 class="text-2xl font-black">احصلي عليه الآن وامنحي شعريّكِ العناية الملكية</h3>
+            <p class="text-sm font-semibold opacity-90">توصيل سريع لكافة مناطق ومدن الأردن</p>
             <div class="pt-2 flex flex-wrap justify-center gap-4">
                 <a href="tel:0791819761" class="bg-black text-[#FCF6BA] font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:bg-gray-900 transition transform hover:scale-105 flex items-center gap-2">
                     <i class="fa-solid fa-phone-volume"></i> 0791819761
@@ -174,5 +245,31 @@
         <p>جميع الحقوق محفوظة © MIRACLE OIL HAIR 2026</p>
     </footer>
 
+    <!-- Simple Countdown Script -->
+    <script>
+        function startTimer(duration, display) {
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            let fiveHours = 60 * 60 * 5,
+                display = document.querySelector('#countdown');
+            startTimer(fiveHours, display);
+        };
+    </script>
 </body>
 </html>
