@@ -48,16 +48,9 @@
         .floating-whatsapp {
             animation: pulse-gold 2s infinite;
         }
-        /* Fade in up animation */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in {
             animation: fadeInUp 0.8s ease-out forwards;
@@ -66,8 +59,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/962791819761" target="_blank" class="fixed bottom-6 left-6 z-50 whatsapp-bg text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl floating-whatsapp transition transform hover:scale-110" title="تواصل عبر الواتساب">
+    <!-- Floating WhatsApp Button with Preset Message -->
+    <a href="https://wa.me/962791819761?text=%Dمرحباً%2C%20أريد%20طلب%20معجزة%20الشعر%20-%20رويال%20أويل%20الفاخر" target="_blank" class="fixed bottom-6 left-6 z-50 whatsapp-bg text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl floating-whatsapp transition transform hover:scale-110" title="تواصل عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -76,7 +69,7 @@
         <i class="fa-solid fa-bolt ml-1"></i> عروض لفترة محدودة: التوصيل مجاني لكافة محافظات الأردن | ينتهي العرض خلال: <span id="countdown" class="bg-black text-[#FCF6BA] px-2 py-0.5 rounded mr-1">05:00:00</span>
     </div>
 
-    <!-- Header Section with Call, WhatsApp & Facebook -->
+    <!-- Header Section -->
     <header class="py-4 px-4 text-center border-b border-[#BF953F]/20 card-glass sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
@@ -94,7 +87,7 @@
                     <i class="fa-solid fa-phone"></i>
                     <span>اتصال</span>
                 </a>
-                <a href="https://wa.me/962791819761" target="_blank" class="whatsapp-bg text-white font-bold px-3 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-1.5 text-xs">
+                <a href="https://wa.me/962791819761?text=%Dمرحباً%2C%20أريد%20طلب%20معجزة%20الشعر%20-%20رويال%20أويل%20الفاخر" target="_blank" class="whatsapp-bg text-white font-bold px-3 py-2 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-1.5 text-xs">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>واتساب</span>
                 </a>
@@ -123,7 +116,7 @@
                     مزيج ملكي نادر من الزيوت العضوية المركزة لتغذية الجذور، منحكِ نعومة حريرية، والقضاء التام على الهيشان والتلف.
                 </p>
                 <div class="pt-2">
-                    <a href="https://wa.me/962791819761" target="_blank" class="whatsapp-bg text-white font-bold px-8 py-3 rounded-full shadow-xl inline-flex items-center gap-2 text-base hover:opacity-90 transition transform hover:scale-105">
+                    <a href="https://wa.me/962791819761?text=%Dمرحباً%2C%20أريد%20طلب%20معجزة%20الشعر%20-%20رويال%20أويل%20الفاخر" target="_blank" class="whatsapp-bg text-white font-bold px-8 py-3 rounded-full shadow-xl inline-flex items-center gap-2 text-base hover:opacity-90 transition transform hover:scale-105">
                         <i class="fa-brands fa-whatsapp text-xl"></i> اطلب العبوة الأصلية الآن
                     </a>
                 </div>
@@ -229,7 +222,7 @@
                 <a href="tel:0791819761" class="bg-black text-[#FCF6BA] font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:bg-gray-900 transition transform hover:scale-105 flex items-center gap-2">
                     <i class="fa-solid fa-phone-volume"></i> 0791819761
                 </a>
-                <a href="https://wa.me/962791819761" target="_blank" class="bg-[#25D366] text-white font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2">
+                <a href="https://wa.me/962791819761?text=%Dمرحباً%2C%20أريد%20طلب%20معجزة%20الشعر%20-%20رويال%20أويل%20الفاخر" target="_blank" class="bg-[#25D366] text-white font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2">
                     <i class="fa-brands fa-whatsapp text-xl"></i> اطلب عبر الواتساب
                 </a>
                 <a href="https://www.facebook.com/share/1DH2k7MqrS/" target="_blank" class="bg-[#1877F2] text-white font-extrabold text-base sm:text-lg px-6 py-3 rounded-full shadow-lg hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2">
@@ -245,7 +238,7 @@
         <p>جميع الحقوق محفوظة © MIRACLE OIL HAIR 2026</p>
     </footer>
 
-    <!-- Simple Countdown Script -->
+    <!-- Countdown Script -->
     <script>
         function startTimer(duration, display) {
             let timer = duration, hours, minutes, seconds;
